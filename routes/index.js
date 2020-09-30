@@ -12,14 +12,19 @@ router.get('/helloworld', function(req, res, next) {
 });
 
 /*GET userlist page */
-router.get('/userlist', function(req, res){
+router.get('/userlist', function(req, res) {
   var db = req.db;
   var collection = db.get('usercollection');
-  collection.find({}, {}, function(e, docs){
-    res.render('userlist', {
-      "userlist": docs
-    });
+  collection.find({},{},function(e,docs){
+      res.render('userlist', {
+          "userlist" : docs
+      });
   });
 });
+
+/*GET new user page*/
+router.get('/newuser', function(req, res) {
+  res.render('newuser', {title: 'Add new user'});
+})
 
 module.exports = router;
